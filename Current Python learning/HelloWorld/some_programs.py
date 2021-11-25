@@ -415,19 +415,21 @@
 #         empty_list.reverse()
 # # =======================================================
 
-# num = input("Enter a number: ")
-# # tmp = 0
-# # swap the first and the last digits of the number
-# arr = []
-# for i in num:
-#     arr.append(int(i))
-#
-# tmp = arr[0]
-# arr[0] = arr[len(arr) - 1]
-# arr[len(arr) - 1] = tmp
-#
-# for i in arr:
-#     print(i, end="")
+# Swap first and last digit of a number...
+
+num = input("Enter a number: ")
+# tmp = 0
+# swap the first and the last digits of the number
+arr = []
+for i in num:
+    arr.append(int(i))
+
+tmp = arr[0]
+arr[0] = arr[len(arr) - 1]
+arr[len(arr) - 1] = tmp
+
+for i in arr:
+    print(i, end="")
 
 # # =======================================================
 
