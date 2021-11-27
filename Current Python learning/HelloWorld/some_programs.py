@@ -417,19 +417,41 @@
 
 # Swap first and last digit of a number...
 
-num = input("Enter a number: ")
-# tmp = 0
-# swap the first and the last digits of the number
-arr = []
-for i in num:
-    arr.append(int(i))
-
-tmp = arr[0]
-arr[0] = arr[len(arr) - 1]
-arr[len(arr) - 1] = tmp
-
-for i in arr:
-    print(i, end="")
+# num = input("Enter a number: ")
+# # tmp = 0
+# # swap the first and the last digits of the number
+# arr = []
+# for i in num:
+#     arr.append(int(i))
+#
+# tmp = arr[0]
+# arr[0] = arr[len(arr) - 1]
+# arr[len(arr) - 1] = tmp
+#
+# for i in arr:
+#     print(i, end="")
 
 # # =======================================================
+
+# Substring Problem
+# Method 1:
+# n1 = input()
+# n2 = input()
+# list(n1)
+# list(n2)
+# if n2 in n1:
+#     print("its there")
+# else:
+#     print("not there")
+#
+# # Method 2:
+# [n1, n2] = list(input().split())
+# if n2 in n1:
+#     print("its there")
+# else:
+#     print("not there")
+# # =======================================================
+
+
+
 
