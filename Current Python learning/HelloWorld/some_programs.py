@@ -461,6 +461,7 @@ def fact(n: int) -> int:
     else:
         return n * fact(n - 1)
 
+
 def trailZero(n: int) -> int:
     count = 0
     while n > 0:
@@ -473,6 +474,5 @@ def trailZero(n: int) -> int:
 
 
 num = int(input("enter a number: "))
-a = fact(num)
-print(f"Number of trailing Zeros of {a} is {trailZero(a)}")
+print(f"Number of trailing Zeros of {fact(num)} is {trailZero(fact(num))}")
 
