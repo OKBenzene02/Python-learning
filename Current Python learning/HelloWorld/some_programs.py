@@ -455,24 +455,25 @@
 # # =======================================================
 
 # Trailing zeros of a factorial
-def fact(n: int) -> int:
-    if (n == 1) or (n == 0):
-        return 1
-    else:
-        return n * fact(n - 1)
+# def fact(n: int) -> int:
+#     if (n == 1) or (n == 0):
+#         return 1
+#     else:
+#         return n * fact(n - 1)
+# 
+#
+# def trailZero(n: int) -> int:
+#     count = 0
+#     while n > 0:
+#         if n % 10 == 0:
+#             count += 1
+#             n /= 10
+#         else:
+#             break
+#     return count
+#
+#
+# num = int(input("enter a number: "))
+# print(f"Number of trailing Zeros of {fact(num)} is {trailZero(fact(num))}")
 
-
-def trailZero(n: int) -> int:
-    count = 0
-    while n > 0:
-        if n % 10 == 0:
-            count += 1
-            n /= 10
-        else:
-            break
-    return count
-
-
-num = int(input("enter a number: "))
-print(f"Number of trailing Zeros of {fact(num)} is {trailZero(fact(num))}")
-
+# # ===========================================================
