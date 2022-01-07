@@ -31,30 +31,30 @@
 # else:
 #     print("well done you reached {}.".format(next_number))
 
-def fizz_buzz(number: int) -> str:
-    if number % 15 == 0:
-        return "Fizz Buzz".casefold()
-    elif number % 3 == 0:
-        return "Fizz".casefold()
-    elif number % 5 == 0:
-        return "Buzz".casefold()
-    else:
-        return str(number)
-
-input("""FIZZ BUZZ
-Press ENTER to start.""")
-print()
-
-next_number = 0
-while next_number < 99:
-    next_number += 1
-    print(fizz_buzz(next_number))
-    next_number += 1
-    correct_number = fizz_buzz(next_number)
-    players_number = input("Your Turn: ")
-    if players_number != correct_number:
-        print("You lose the correct answer was {}".format(correct_number))
-        break
+# def fizz_buzz(number: int) -> str:
+#     if number % 15 == 0:
+#         return "Fizz Buzz".casefold()
+#     elif number % 3 == 0:
+#         return "Fizz".casefold()
+#     elif number % 5 == 0:
+#         return "Buzz".casefold()
+#     else:
+#         return str(number)
+#
+# input("""FIZZ BUZZ
+# Press ENTER to start.""")
+# print()
+#
+# next_number = 0
+# while next_number < 99:
+#     next_number += 1
+#     print(fizz_buzz(next_number))
+#     next_number += 1
+#     correct_number = fizz_buzz(next_number)
+#     players_number = input("Your Turn: ")
+#     if players_number != correct_number:
+#         print("You lose the correct answer was {}".format(correct_number))
+#         break
 
 
 
