@@ -477,3 +477,15 @@
 # print(f"Number of trailing Zeros of {fact(num)} is {trailZero(fact(num))}")
 
 # # ===========================================================
+# Designer door mat
+M = int(input("Enter the one dimension: "))
+N = 3 * M
+half = int(M / 2)
+
+for i in range(half):
+    print((".|."*((2*i) + 1)).center(N, '-'))
+
+print("WELCOME".center(3 * M, '-'))
+
+for i in range(half, 0, -1):
+    print((".|."*((2*i) - 1)).center(N, '-'))
