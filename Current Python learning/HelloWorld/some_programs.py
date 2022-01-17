@@ -438,8 +438,8 @@
 # Method 1:
 # n1 = input()
 # n2 = input()
-# list(n1)
-# list(n2)
+# print(list(n1))
+# print(list(n2))
 # if n2 in n1:
 #     print("its there")
 # else:
@@ -489,3 +489,60 @@
 #
 # for i in range(half, 0, -1):
 #     print((".|."*((2*i) - 1)).center(N, '-'))
+# # ===========================================================
+# String formatting
+
+# def print_formatted(n):
+#     l = len(f"{n}")
+#     for i in range(1, n+1):
+#         print("{0:>{g}d} {0:>{g}o} {0:>{g}x} {0:>{g}b}".format(i, g=l))
+
+# def print_formatted(n):
+#     l = len(str(bin(n)))
+#     for i in range(1, n+1):
+#         print(str(i).rjust(l, ' '), oct(i)[2::].rjust(l, ' '), hex(i)[2::].rjust(l, ' ').upper(), bin(i)[2::].rjust(l, ' '))
+#
+#
+# n = int(input())
+# print_formatted(n)
+
+# # ===========================================================
+
+# arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+# l = []
+# n = int(input("enter size: "))
+#
+# for i in range(n):
+#     l.append(arr[i])
+#
+# l.sort(reverse=True)
+#
+# m = l[::] + l[n - 2:: - 1]
+# mid = '-'.join(m)
+# length = len(mid)
+# # print(mid)
+# # print(length)
+# # print(l[n - 5:: - 1])
+# # print(l[:n - 3])
+# if n == 1:
+#     print(l[0])
+# else:
+#     for i in range(1, n):
+#         print('-'.join(l[:n - (n - i + 1)] + l[n - (n - i + 1)::-1]).center(length, '-'))
+#
+#     for i in range(n, 0, -1):
+#         print('-'.join(l[:n - (n - i + 1)] + l[n - (n - i + 1)::-1]).center(length, '-'))
+
+# # ===========================================================
+#  Word capitalize
+# arr = []
+# s = input("enter something: ")
+# n = len(s.split(" "))
+# for ele in s.split(" "):
+#     a = ele.capitalize()
+#     arr.append(a)
+#
+# print(" ".join(arr))
+
+
+
