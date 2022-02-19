@@ -47,3 +47,40 @@ car2.details()
 # a = input("Enter a number: ")
 # number = Palindrome()
 # number.palindrome(a)
+
+# # =================================================
+
+# class Strings:
+#
+#     def get_string(this, smtg):
+#         this.smtg = smtg
+#
+#     def print_string(this):
+#         if this.smtg[0].isupper() and this.smtg.endswith("."):
+#             print("It is a Proper string")
+#         else:
+#             print(this.smtg.capitalize() + ".")
+#
+#
+# a = Strings()
+# inputs = input("Please enter your string: ")
+# a.get_string(inputs)
+# a.print_string()
+
+# # =================================================
+""" 
+Instance Attributes are those which are decalred in class method 
+Below example 
+__init__ is method of class and here we define our variables like preproccessed_data, machine_learning_model
+so these can also be known as instance attributes
+"""
+# class DataScience:
+#
+#     def __init__(self):
+#         self.preproccessed_data = "excel"
+#         self.machine_learning_model = "Clustering"
+#
+# obj = DataScience()
+# # print(vars(obj))
+# # print(obj.preproccessed_data)
+# # print(obj.machine_learning_model)

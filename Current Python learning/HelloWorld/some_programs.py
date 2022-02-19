@@ -545,4 +545,158 @@
 # print(" ".join(arr))
 
 
+# t = [{
+#     'name' : 'Rohith',
+#     'post' : 'President',
+#     'dept' : 'CSE',
+#     'year' : 4,
+#     'sec' : 'A',
+# },
+#     {
+#         'name' : 'Jiva',
+#         'post' : 'Vice president',
+#         'dept' : 'cse',
+#         'year' : 4,
+#         'sec' : 'B',
+#     },
+#     {
+#         'name' : 'Yuvanshankar',
+#         'post' : 'Secretary',
+#         'dept' : 'CSE',
+#         'year' : 4,
+#         'sec' : 'C',
+#     },
+#     {
+#         'name' : 'Mohammed Irfan Khan',
+#         'post' : 'President',
+#         'dept' : 'CSE',
+#         'year' : 4,
+#         'sec' : 'C',
+#     },]
+#
+# for i in range(len(t)):
+#     if t[i]["dept"].islower():
+#         b = t[i]["dept"].upper()
+#     t[i].update()
+# print(t)
+# # ===========================================================
+"""Question 2"""
+
+# str_List = []
+# int_List = []
+# a = input("Enter the string with Alphanumeric characters: ").split()
+# for i in range(len(a)):
+#     if a[i].isnumeric():
+#         int_List.append(a[i])
+#     else:
+#         str_List.append(a[i])
+#
+# print("Length of integers:", len(" ".join(int_List)))
+# print("Lenght of alphabets:", len(" ".join(str_List)))
+
+
+# # ===========================================================
+
+"""Question 4"""
+
+# str_tuple = []
+# int_list = []
+# int_set = []
+#
+# n = int(input("Enter the range: "))
+#
+# for i in range(n):
+#     a = input("Enter string: ")
+#     str_tuple.append(a)
+#     b = int(input("Enter integer: "))
+#     if b > 0:
+#         int_list.append(b)
+#     else:
+#         int_set.append(b)
+#
+# print(tuple(str_tuple))
+# print(int_list)
+# print(set(int_set))
+# # ===========================================================
+
+"""Question 1"""
+
+# # Question 1
+d1 = {"name": "Krish",
+      "class": "CSE",
+      "section": "A",
+      "roll number": 23}
+
+d2 = {"name": "Rahul",
+      "class": "ECE",
+      "section": "B",
+      "roll number": 41}
+
+d3 = {"name": "Lilly put",
+      "class": "AI & DS",
+      "section": "A",
+      "roll number": 26}
+
+# # Question 2
+# print(d1.values())
+# print()
+# print(d2.values())
+# print()
+# print(d3.values())
+
+# # Question 3
+d1["marks"] = 78
+d2["marks"] = 89
+d3["marks"] = 75
+
+# print(d1)
+# print(d2)
+# print(d3)
+
+# # Question 4
+# l = []
+# p = d1["marks"]
+# q = d2["roll number"]
+# r = d3["section"]
+# l.append(p)
+# l.append(q)
+# l.append(r)
+# del d1["marks"]
+# del d2["roll number"]
+# del d3["section"]
+#
+# print(l)
+
+# # Question 5
+# d4 = {"name" : {d1["name"], d2["name"], d3["name"]},
+#       "class": {d1["class"], d2["class"], d3["class"]},
+#       "section": {d1["section"], d2["section"], d3["section"]},
+#       "roll no": {d1["roll number"], d2["roll number"], d3["roll number"]},
+#       "marks": {d1["marks"], d2["marks"], d3["marks"]}}
+#
+# print(d4)
+# # ===========================================================
+
+"""Question 5"""
+# # 3 X 3
+# m1 = [[12, 7, 3],
+#       [4, 5, 6],
+#       [7, 8, 9]]
+#
+# # 3 x 4
+# m2 = [[5, 8, 1],
+#       [6, 7, 3],
+#       [4, 5, 9]]
+#
+# res = [[0, 0, 0, 0],
+#        [0, 0, 0, 0],
+#        [0, 0, 0, 0]]
+#
+# for i in range(len(m1)):
+#     for j in range(len(m2[0])):
+#         for k in range(len(m2)):
+#             res[i][j] += m1[i][k] * m2[k][j]
+#
+# for ele in res:
+#     print(ele)
 
