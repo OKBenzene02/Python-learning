@@ -700,3 +700,22 @@ d3["marks"] = 75
 # for ele in res:
 #     print(ele)
 
+# # ===========================================================
+# Frequency sort
+def recent(n: str):
+      a = {}
+      for ele in n:
+            a[ele] = 0
+      for ele in n:
+            if ele in n:
+                  a[ele] += 1
+            else:
+                  a[ele] = 1
+
+      b = sorted(a.items(), key=lambda item: item[1], reverse=True)
+      for i in b:
+            print(f"{i[0]} = 0{i[1]}")
+
+
+string = input("enter the string: ")
+recent(string)
