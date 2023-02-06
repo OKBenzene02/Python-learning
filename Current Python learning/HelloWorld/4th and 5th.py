@@ -71,3 +71,50 @@
 #
 # print(bit)
 # print("".join(bitLst))
+
+# +, -, *, //, /, %, **
+# print(12 % 2, 'remainder')
+# print(12 // 2, 'quotient')
+# print(12 / 2, 'divisor')
+#
+# pi = 3.14
+# r = 12
+# area = pi * (r ** 2)
+# print(area)
+
+# name = str(input("enter your name: "))
+# age = int(input('enter your age: '))
+# print(name, age)
+#
+# if age % 2 == 0:
+#     print('even')
+# else:
+#     print("odd")
+
+# x, y, z = input("enter three numbers: ").split()
+# print(int(x), int(y), int(z))
+
+# num = int(input('enter the number: '))
+#
+# if num % 2 != 0:
+#     print('Weird')
+#
+# elif (num % 2 == 0) and (2 <= num <= 5):
+#     print("Not Weird")
+#
+# elif (num % 2 == 0) and (6 <= num <= 20):
+#     print("Weird")
+#
+# elif (num % 2 == 0) and (num > 20):
+#     print("Not Weird")
+
+l = list(i+1 for i in range(10))
+
+print(l[0:4])
+print(l[2:])
+print(l[::])
+print(l[1:5:2])
+print(l[1:10:2])
+print(l[::-1])
+print(l[:-1])
+print(l[-3:])

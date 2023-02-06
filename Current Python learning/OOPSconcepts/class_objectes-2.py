@@ -69,3 +69,36 @@
 # print(smtg.id)
 # del smtg.name
 # print(smtg.name)
+#
+# class Employee:
+#     salary = 0
+#
+#
+# mere_employee = Employee()
+# mere_employee.salary = 5000
+# # Adding new properties to Employee class.
+# mere_employee.name = "Liyakhat yousuf mogal"
+# mere_employee.age = 20
+# print("Employee NAME: ", mere_employee.name)
+# print("Employee AGE: ", mere_employee.age)
+# print("Employee SALARY: ", mere_employee.salary)
+
+# average = 0
+# l = []
+# while True:
+#     num = int(input("Enter a number: "))
+#     l.append(num)
+#     if num == -1:
+#         print(f"The average of entered numbers is: {sum(l[:-1]) / len(l[:-1])}")
+#         break
+
+# l = [1, 2, 3, 4, 5]
+# print(l[:-1])
+
+def add(a, b):
+    return a + b
+
+def printFunc(a, b, math):
+    print(f'Sum of two numbers is {math(a, b)}')
+
+printFunc(5, 3, add)

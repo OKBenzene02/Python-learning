@@ -56,5 +56,16 @@
 #         print("You lose the correct answer was {}".format(correct_number))
 #         break
 
+# num = int(input("Enter a number: "))
+
+for num in range(100):
+    if num % 15 == 0:
+        print("FizzBuzz")
+    elif num % 3 == 0:
+        print("Fizz")
+    elif num % 5 == 0:
+        print("Buzz")
+    else:
+        print(num)
 
 

@@ -8,7 +8,7 @@
 # print("!")
 # print("That's it you have mastered it.")
 # print("hello", 'hello', 'hello', 3)
-a = 153
+a = 15
 b = 10
 c = a//b # Quotient
 d = a % b # Remainder
