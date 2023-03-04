@@ -24,21 +24,21 @@
 #
 # print(empty_dic)
 
-empty_list = []
-n = int(input())
-for i in range(n):
-    splitting = input().split()
-    if splitting[0] == "insert":
-        empty_list.insert(int(splitting[1]), int(splitting[2]))
-    elif splitting[0] == "print":
-        print(empty_list)
-    elif splitting[0] == "remove":
-        empty_list.remove(int(splitting[1]))
-    elif splitting[0] == "append":
-        empty_list.append(int(splitting[1]))
-    elif splitting[0] == "sort":
-        empty_list.sort()
-    elif splitting[0] == "pop":
-        empty_list.pop()
-    elif splitting[0] == "reverse":
-        empty_list.reverse()
+# empty_list = []
+# n = int(input())
+# for i in range(n):
+#     splitting = input().split()
+#     if splitting[0] == "insert":
+#         empty_list.insert(int(splitting[1]), int(splitting[2]))
+#     elif splitting[0] == "print":
+#         print(empty_list)
+#     elif splitting[0] == "remove":
+#         empty_list.remove(int(splitting[1]))
+#     elif splitting[0] == "append":
+#         empty_list.append(int(splitting[1]))
+#     elif splitting[0] == "sort":
+#         empty_list.sort()
+#     elif splitting[0] == "pop":
+#         empty_list.pop()
+#     elif splitting[0] == "reverse":
+#         empty_list.reverse()

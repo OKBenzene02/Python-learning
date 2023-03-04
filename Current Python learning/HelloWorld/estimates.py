@@ -34,3 +34,4 @@ plt.xlabel('Estimates')
 plt.ylabel('Centered Estimates')
 plt.title('Mean Median Plot of Estimates')
 plt.show()
+

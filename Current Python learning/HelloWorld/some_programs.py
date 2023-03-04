@@ -508,7 +508,8 @@
 
 # # ===========================================================
 
-# arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+# arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+# 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 # l = []
 # n = int(input("enter size: "))
 #
@@ -619,23 +620,23 @@
 # print(set(int_set))
 # # ===========================================================
 
-"""Question 1"""
-
-# # Question 1
-d1 = {"name": "Krish",
-      "class": "CSE",
-      "section": "A",
-      "roll number": 23}
-
-d2 = {"name": "Rahul",
-      "class": "ECE",
-      "section": "B",
-      "roll number": 41}
-
-d3 = {"name": "Lilly put",
-      "class": "AI & DS",
-      "section": "A",
-      "roll number": 26}
+# """Question 1"""
+#
+# # # Question 1
+# d1 = {"name": "Krish",
+#       "class": "CSE",
+#       "section": "A",
+#       "roll number": 23}
+#
+# d2 = {"name": "Rahul",
+#       "class": "ECE",
+#       "section": "B",
+#       "roll number": 41}
+#
+# d3 = {"name": "Lilly put",
+#       "class": "AI & DS",
+#       "section": "A",
+#       "roll number": 26}
 
 # # Question 2
 # print(d1.values())
@@ -645,9 +646,9 @@ d3 = {"name": "Lilly put",
 # print(d3.values())
 
 # # Question 3
-d1["marks"] = 78
-d2["marks"] = 89
-d3["marks"] = 75
+# d1["marks"] = 78
+# d2["marks"] = 89
+# d3["marks"] = 75
 
 # print(d1)
 # print(d2)
@@ -793,3 +794,4 @@ d3["marks"] = 75
 #
 # print(bit)
 # print("".join(bitLst))
+
