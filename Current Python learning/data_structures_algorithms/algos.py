@@ -1,6 +1,61 @@
-# # ==========================================================
-# # Sieve of eratosthenes
+# # =================================================================================
+# Geek marks linear Search
+# def geeks_marks(t):
+#     res = []
+#     while t:
+#         n, x = map(int, input().split())
+#         marks = list(map(int, input().split()))
+#         count = 0
+#         for mark in marks:
+#             if mark > int(x):
+#                 count += 1
+#
+#         res.append(count) if count else res.append(0)
+#         t -= 1
+#
+#     for num in res:
+#         print(num)
+#
+# t = int(input())
+# geeks_marks(t)
 import math
+
+
+# # =================================================================================
+# Geek and his marks, Binary Search
+# def binary_search(t):
+#     res = []
+#     while t != 0:
+#         n = int(input())
+#         n = sorted([int(num) for num in input().split(" ")])
+#         q = int(input())
+#         temp = []
+#         for i in range(q):
+#             some_num = int(input())
+#             temp.append(some_num)
+#         for num in range(1, q + 1):
+#             low = 0
+#             high = len(n) - 1
+#             sum = 0
+#             while low <= high:
+#                 mid = (low + high) // 2
+#                 if n[mid] > num:
+#                     sum += n[mid]
+#                 low = mid + 1
+#             res.append(sum)
+#
+#         t -= 1
+#
+#         for i in range(len(res)):
+#             print(res[i])
+#
+#
+# t = int(input())
+# binary_search(t)
+# # =================================================================================
+# # Sieve of eratosthenes
+
+# import math
 # def sieve_eratosthenes(n):
 #     primes = [True for i in range(n + 1)]
 #     p = 2
@@ -69,25 +124,30 @@ import math
 # simpleSieve(20)
 # print(prime)
 
-# ========================================================
+# ===============================================================================
 # Product of primes
-# def prod_primes(l, r):
-#     primes = [True] * (r - l + 1)
-#     for i in range(2, math.floor(math.sqrt(r))):
-#         j = max(i * i, (l/i) * i)
-#         while (j <= r):
-#             if (j-r <= r - l) & (j - l >= 0):
-#                 primes[j - l] = False
-#             j += i
-#     ans = 1
-#     for j in range(r - l):
-#         if primes[j]:
-#             ans = (ans * (j + l)) % 1000000007
-#
-#     return ans
-# print(prod_primes(1, 10))
 
-# ========================================================
+# def sieve(n):
+#     prime = [True] * (n + 1)
+#     p = 2
+#     while p * p <= n:
+#         if prime[p]:
+#             for i in range(p * p, n + 1, p):
+#                 prime[i] = False
+#         p += 1
+#
+#     return prime
+# def productPrimes(l, r):
+#     d = 1
+#     for i in range(l, r + 1):
+#         if sieve(i)[i]:
+#             d = d * i
+#             d = d % (10 ** 9 + 7)
+#     return d % (10 ** 9 + 7)
+#
+# print(productPrimes(1, 20))
+
+# ===============================================================================
 # Add Binary
 # def addBinary(a, b) -> str:
 #     max_len = max(len(a), len(b))
@@ -109,40 +169,53 @@ import math
 #
 #
 # print(addBinary('11','1'))
-# =======================================================
+
+# def addBinary(a, b):
+#     length = max(len(a), len(b))
+#     a, b = a.zfill(length), b.zfill(length)
+#     int_a, int_b = 0, 0
+#     for i in range(len(a) - 1, -1, -1):
+#         if a[i] == '0':
+#             int_a += (pow(2, len(a) - 1 - i) * 0)
+#         else:
+#             int_a += pow(2, len(a) - 1 - i)
+#
+#     for i in range(len(b) - 1, -1, -1):
+#         if b[i] == '0':
+#             int_b += (pow(2, len(b) - 1 - i) * 0)
+#         else:
+#             int_b += pow(2, len(b) - 1 - i)
+#
+#     return str(bin(int_a + int_b))[2:].zfill(length)
+#
+# print(addBinary('1010', '1011'))
+
+# ==============================================================================
 # Is Subsequence
 
 # def isSub(s, t):
-#     s=list(s)
-#     p=len(t)-len(s)
-#     for i in range(p):
-#         s.append('')
+#     s = list(s)
+#     t = list(t)
+#     char = len(t) - len(s)
+#     for _ in range(char):
+#         s.append("")
 #
-#     t=list(t)
-#
-#     j=0
-#
-#     i=0
-#
-#     while(i<len(s) and j<len(t)):
-#
-#         if(s[i]==t[j]):
-#             s[i]=''
-#             i+=1
-#             j+=1
+#     l, r = 0, 0
+#     while (l < len(s)) and (r < len(t)):
+#         if s[l] == t[r]:
+#             s[l] = ""
+#             l += 1
+#             r = l
 #         else:
-#             j+=1
-#
-#     x=s.count('')
-#
-#     if(x==len(s)):
+#             r += 1
+#     if s.count("") == len(s):
 #         return True
 #     else:
 #         return False
 #
 # print(isSub('abc', 'ahbgdc'))
 
-# ==================================================
+# =========================================================================
 # Isomorphic strings
 
 # def isomorphic(s, t):
@@ -156,21 +229,22 @@ import math
 #     return True
 #
 # print(isomorphic('egg', 'add'))
-# ===================================================
+# ==========================================================================
 # Finding the divisors
 
 # def divisors(n: int):
 #     i = 1
-#     while i <= math.sqrt(n):
+#     while i <= math.floor(math.sqrt(n)):
 #         if n % i == 0:
 #             if n/i == i:
 #                 print(i, end=" ")
 #             else:
-#                 print(i , int(n/i), end=" ")
+#                 print(i, int(n/i), end=" ")
 #         i += 1
 #
-# divisors(10)
-# ===================================================
+# divisors(3)
+
+# ==========================================================================
 # Count the total number of divisors
 
 # def count_divisors(n: int) -> int:
@@ -188,7 +262,7 @@ import math
 #     return len(l)
 #
 # print(count_divisors(10))
-# =================================================
+# ========================================================================
 # kth smallest factor
 
 # def smallestFactor(n: int, k: int):
@@ -205,7 +279,8 @@ import math
 #         return -1
 #
 # print(smallestFactor(10, 3))
-# =================================================
+
+# ========================================================================
 # Array form of integer
 
 # def array_form(n: [int], k: int):
@@ -216,7 +291,7 @@ import math
 #     return str_to_int
 #
 # print(array_form([1, 2, 3], 334))
-# =================================================
+# ========================================================================
 # All prime factors of n
 
 # def prime_factors(n: int):
@@ -234,7 +309,7 @@ import math
 #
 # prime_factors(6)
 
-# ===================================================
+# ==========================================================================
 # Least Prime Factor
 
 # def leastPrimeFactor(n):
@@ -252,7 +327,7 @@ import math
 #
 # print(leastPrimeFactor(12))
 
-# ===================================================
+# ==========================================================================
 # Largest Prime Number
 # def largestPrime(n):
 #     l = []
@@ -274,7 +349,7 @@ import math
 #
 # print(largestPrime(6))
 
-# ===================================================
+# ==========================================================================
 # Prime Factorization using sieve O(log(n)) for multiple queries
 
 # max_n = 100001
@@ -307,7 +382,7 @@ import math
 # x = 100
 # print(primeFactor(x))
 
-# ===================================================
+# ==========================================================================
 # Sum of all factors with O(N) and O(sqrt(N))
 # def sum_factors(n):
 #     sum = 0
@@ -357,8 +432,9 @@ import math
 #     return sum
 #
 # print(factor_sum(30))
-# ===============================================
-# GCD or HCF of two numbers using the euclidean subtraction algorithm
+
+# ======================================================================
+# GCD or HCF of two numbers using the Euclidean subtraction algorithm
 # Has Time complexity of O(min(a, b))
 
 # Iterative method
@@ -404,7 +480,7 @@ import math
 #
 #
 # print(extented_gcd(98, 56))
-# ====================================================
+# ===========================================================================
 # Linear Diophantine equations
 
 # def gcd(a, b):
@@ -417,7 +493,7 @@ import math
 #
 # print(linear(3, 6, 9))
 
-# ======================================================
+# =============================================================================
 # Least common multiple using GCD by O(log(min(a, b)))
 
 # def gcd(a, b):
@@ -435,7 +511,7 @@ import math
 #
 # print(lcm(15, 25))
 
-# =======================================================
+# ==============================================================================
 # Maximum and minimum in an array using tournament method with O(n)
 # def findSum(A,N):
 #     max_num = A[0]
@@ -462,7 +538,7 @@ import math
 #     return max_num + min_num
 #
 # print(findSum([-2, 1, -4, 5, 3], 5))
-# =========================================================
+# ================================================================================
 # Best time to buy stocks and sell stocks
 
 # def buy_sell(l: [list]) -> int:
@@ -507,7 +583,7 @@ import math
 #
 # print(isDuplicate([10, 20]))
 
-# ================================================
+# =======================================================================
 # Two Sum
 # def two_sum(nums, target):
 #     for i in range(len(nums)):
@@ -517,7 +593,19 @@ import math
 #     return -1
 #
 # print(two_sum([3, 3], 6))
-# ===============================================
+
+# Two Sum using Hash Table
+
+# def twoSum(nums, target):
+#     mp = {}
+#     for i, num in enumerate(nums):
+#         right = target - num
+#         if right in mp:
+#             return [mp[right], i]
+#         mp[num] = i
+#
+# print(twoSum([2,7,11,15], 9))
+# ======================================================================
 # Reverse integer
 # def int_reverse(x):
 #     if x >= 0:
@@ -536,10 +624,27 @@ import math
 #     else:
 #         return int(sign + "".join(temp))
 #
-# print(int_reverse(120))
+# print(int_reverse(-123))
 
+# def reverse(x):
+#     min_num = -2147483648
+#     max_num = 2147483647
+#
+#     res = 0
+#     while x:
+#         digit = int(math.fmod(x, 10))
+#         x = int(x / 10)
+#
+#         if (res > max_num // 10) or (res == max_num // 10 and digit >= max_num % 10):
+#             return 0
+#         if (res < min_num // 10) or (res == min_num // 10 and digit <= min_num % 10):
+#             return 0
+#         res = (res * 10) + digit
+#     return res
+#
+# print(reverse(-123))
 # print(list(str(-123))[1::])
-# ===============================================
+# ======================================================================
 # Longest palindrome
 
 # def palindrome(s: str):
@@ -562,8 +667,10 @@ import math
 #     return res
 #
 # print(palindrome('abccccdd'))
-# ===============================================
+
+# ======================================================================
 # Number compression using Hashmap or unordered list
+
 # def reduced_form(l):
 #     temp = l
 #     temp = sorted(temp)
@@ -578,25 +685,43 @@ import math
 #     return l
 #
 # print(reduced_form([10, 40, 20]))
-# ===============================================
+# ======================================================================
 # Kadane's Algorithm
 
-# def max_subarray(l: list) -> int:
-#     max_so_far = -99999999999999999999
-#     max_ending_here = 0
+# def maximumSumSubArray(nums):
+#     currMax, res = 0, -99999999999999
+#
+#     for num in nums:
+#         currMax += num
+#         if currMax > res:
+#             res = currMax
+#         if currMax < 0:
+#             currMax = 0
+#
+#     return res
+#
+# print(maximumSumSubArray([-2, -3, 4, -1, -2, 1, 5, -3]))
+
+
+# Min subarray using Kadane's algorithm
+# def min_subarray(l: list):
+#     min_so_far = 999999999999999
+#     min_ending_here = 0
+#     min_arr = []
 #
 #     for i in range(len(l)):
-#         max_ending_here = max_ending_here + l[i]
-#         if max_so_far < max_ending_here:
-#             max_so_far = max_ending_here
-#         if max_ending_here < 0:
-#             max_ending_here = 0
+#         min_ending_here = min_ending_here + l[i]
+#         if min_so_far > min_ending_here:
+#             min_so_far = min_ending_here
+#         if min_ending_here > 0:
+#             min_ending_here = 0
 #
-#     return max_so_far
+#     return min_so_far
 #
 #
-# print(max_subarray([-1]))
-# ===============================================
+# print(min_subarray([5, 9, -3, -2, 9, 4]))
+
+# ======================================================================
 # String compression
 
 # def compress(l: list) -> :
@@ -618,27 +743,26 @@ import math
 #
 # print(compress(["a","b","b","b","b","b","b","b","b","b","b","b","b"]))
 
-# def compress(chars: list) -> int:
-#     i = 0
-#     to = 0
-#     while i < len(chars):
-#         j = i
-#         while j < len(chars) and chars[j] == chars[i]:
+# def compress(chars):
+#     i, j = 0, 0
+#     while j < len(chars):
+#         chars[i] = chars[j]
+#         count = 1
+#         while (j + 1) < len(chars) and chars[j] == chars[j + 1]:
 #             j += 1
+#             count += 1
+#         if count > 1:
+#             for c in str(count):
+#                 chars[i + 1] = c
+#                 i += 1
+#         j += 1
+#         i += 1
+#     return i
 #
-#         num = j - i
-#         chars[to] = chars[i]
-#         to += 1
-#         if num > 1:
-#             for digit in str(num):
-#                 chars[to] = digit
-#                 to += 1
-#         i = j
-#     chars = chars[:to]
-#     return to
-#
-# print(compress([]))
-# ===============================================
+# print(compress(["b","b","a","a","c","c","c"]))
+# ======================================================================
+# String matching problem
+
 # def string_match(haystack, needle) -> int:
 #
 #     l = []
@@ -657,20 +781,318 @@ import math
 #
 #
 # print(string_match('mississippi', 'issip'))
-# ===============================================
+
+# ======================================================================
 # Count the number of sub arrays with fixed bounds
 
-def count_sub(arr, minK, maxk):
-    res = 0
-    bad_index, left_index, right_index = -1, -1, -1
+# def count_sub(arr, minK, maxk):
+#     res = 0
+#     bad_index, left_index, right_index = -1, -1, -1
+#
+#     for i, num in enumerate(arr):
+#         if not minK <= num <= maxk: bad_index = i
+#         if num == minK: left_index = i
+#         if num == maxk: right_index = i
+#         res += max(0, min(left_index, right_index) - bad_index)
+#
+#     return res
+#
+# print(count_sub([1,3,5,2,7,5], 1, 5))
 
-    for i, num in enumerate(arr):
-        if not minK <= num <= maxk: bad_index = i
-        if num == minK: left_index = i
-        if num == maxk: right_index = i
-        res += max(0, min(left_index, right_index) - bad_index)
 
-    return res
+# ======================================================================
+# import numpy as np
+#
+# def isBadVersion(n):
+#     temp = np.random.randint(1, n)
+#     if temp == n:
+#         return True
+#     return False
+#
+# def FirstBad(n):
+#     low = 1
+#     high = n + 1
+#     while low < high:
+#         mid = low + (high - low) // 2
+#         if not isBadVersion(mid):
+#             low = mid + 1
+#         else:
+#             high = mid
+#
+#     return low
+#
+# print(FirstBad(5))
 
-print(count_sub([1,3,5,2,7,5], 1, 5))
-    
+# ======================================================================
+# Jump game by using greedy search with O(n)
+
+# def jump(n: list) -> bool:
+#     goal = len(n) - 1
+#
+#     for i in range(len(n) - 1, -1 , -1):
+#         if i + n[i] >= goal:
+#             goal = i
+#     return True if goal == 0 else False
+#
+# print(jump([2,3,1,1,4]))
+
+# Variant of Jump game --> Jump game 2
+# Count minimum number of jumps
+
+# def jump(arr):
+#     res = 0
+#     l, r = 0, 0
+#
+#     while r < len(arr) + 1:
+#         far = 0
+#         for i in range(l, r + 1):
+#             far = max(far, i + arr[i])
+#
+#         l = r + 1
+#         r = far
+#         res += 1
+#
+#     return res
+#
+# print(jump([2,3,1,1,4]))
+
+# Variant of Jump game --> Jump game 3
+# Reach the end index with some specified starting point
+
+# def jump(arr, start):
+#     if start < 0 or start >= len(arr) or arr[start] < 0:
+#         return False
+#     arr[start] *= -1
+#     return arr[start] == 0 or jump(arr, start + arr[start]) or jump(arr, start - arr[start])
+#
+# print(jump([3,0,2,1,2], 2))
+
+# Variant of Jump game --> Jump game 4
+# from collections import defaultdict, deque
+# def minJump(arr):
+#     n = len(arr)
+#     if n == 1:
+#         return 0
+#
+#     indices = defaultdict(list)
+#     for i in range(n):
+#         indices[arr[i]].append(i)
+#
+#     storeIndex = deque()
+#     visited = [False] * n
+#     storeIndex.append(0)
+#     visited[0] = True
+#     steps = 0
+#
+#     while storeIndex:
+#         size = len(storeIndex)
+#         while size > 0:
+#             currIndex = storeIndex.popleft()
+#             size -= 1
+#             if currIndex == n - 1:
+#                 return steps
+#
+#             jumpNextIndices = indices[arr[currIndex]]
+#             jumpNextIndices.append(currIndex - 1)
+#             jumpNextIndices.append(currIndex + 1)
+#             for jumpNextIndex in jumpNextIndices:
+#                 if 0 <= jumpNextIndex < n and not visited[jumpNextIndex]:
+#                     storeIndex.append(jumpNextIndex)
+#                     visited[jumpNextIndex] = True
+#             jumpNextIndices.clear()
+#         steps += 1
+#     return -1
+#
+# print(minJump([100,-23,-23,404,100,23,23,23,3,404]))
+
+# Approach by using bfs and concept of Jump game 2, 3
+# def minJumps(arr):
+#     n = len(arr)
+#     if n == 1:
+#         return 0
+#
+#     indices = defaultdict(list)
+#     for i, adj in enumerate(arr):
+#         indices[adj].append(i)
+#
+#     indexArray = deque()
+#     visited = [False] * n
+#     indexArray.append(0)
+#     visited[0] = True
+#     steps = 0
+#     while indexArray:
+#         size = len(indexArray)
+#         while size > 0:
+#             currIndex = indexArray.popleft()
+#             size -= 1
+#             if currIndex == n - 1:
+#                 return steps
+#             jumpIndexes = indices[arr[currIndex]]
+#             jumpIndexes.append(currIndex - 1)
+#             jumpIndexes.append(currIndex + 1)
+#
+#             for jumpIndex in jumpIndexes:
+#                 if 0 <= jumpIndex < n and not visited[jumpIndex]:
+#                     indexArray.append(jumpIndex)
+#                     visited[jumpIndex] = True
+#             jumpIndexes.clear()
+#         steps += 1
+#     return -1
+#
+# print(minJumps([100,-23,-23,404,100,23,23,23,3,404]))
+
+# =============================================================================================
+# Kth missing integer
+
+# def missing(arr, k):
+#     temp = [i for i in range(1, 9999)]
+#     return list(set(temp).difference(arr))[k-1]
+#
+# print(missing([2], 1))
+
+# =============================================================================================
+# Minimum time to complete trips (Binary Search)
+#
+# def calc_total_trip(arr, givenTime):
+#     total = 0
+#     for i in range(len(arr)):
+#         total += givenTime // arr[i]
+#
+#     return total
+#
+# def trips(arr, totalTrips):
+#     low = 1
+#     high = totalTrips * min(arr)
+#
+#     while low < high:
+#         mid = (high + low) // 2
+#
+#         total_val = calc_total_trip(arr, mid)
+#
+#         if total_val < totalTrips:
+#             low = mid + 1
+#
+#         else:
+#             high = mid
+#
+#     return low
+#
+# print(trips([1, 2, 3], 5))
+
+
+# =============================================================================================
+# Koko eating banana's (Binary Search)
+
+# def kokoBananas(piles, h):
+#     low, high = 1, max(piles)
+#     res = high
+#
+#     while low < high:
+#         mid = (low + high) // 2
+#         totalTime = 0
+#         for num in piles:
+#             totalTime += (num // mid) + 1
+#         if totalTime <= h:
+#             res = min(mid, res)
+#             high = mid
+#         else:
+#             low = mid + 1
+#
+#     return low
+#
+# print(kokoBananas([30, 11, 23, 4, 20], 5))
+
+# =============================================================================================
+# Ceaser cipher
+# import string
+# def shifts(word, value):
+#     letters = string.ascii_lowercase
+#
+#     new = ''
+#     for i in range(len(word)):
+#         if word[i] in letters:
+#             index = letters.index(word[i])
+#             new = new + letters[(index+value)%26]
+#         else:
+#             new = new + word[i]
+#
+#     return new
+#
+#
+# print(shifts('Hello Juliet', 4))
+
+# =============================================================================================
+# Unique Paths using Dynamic Programming
+
+# def unique_paths(m, n):
+#     end_row = [1] * n
+#
+#     for i in range(m - 1):
+#         prev_row = [1] * n
+#         for j in range(n - 2, -1, -1):
+#             prev_row[j] = prev_row[j + 1] + end_row[j]
+#         end_row = prev_row
+#
+#     return end_row[0]
+#
+# print(unique_paths(3, 7))
+
+# =============================================================================================
+# Backspace character
+
+# def backspace(s: str, t: str) -> bool:
+#     res1, res2 = [], []
+#     for char in s:
+#         if char != '#':
+#             res1 += char
+#         elif res1:
+#             res1.pop()
+#
+#     for char in t:
+#         if char != '#':
+#             res2 += char
+#         elif res2:
+#             res2.pop()
+#
+#     return True if "".join(res1) == "".join(res2) else False
+#
+# print(backspace('a##c', "#a#c"))
+# =============================================================================================
+# Decode string
+
+# def decode(s: str):
+#     stack = []
+#     for i in range(len(s)):
+#         if s[i] != ']':
+#             stack.append(s[i])
+#         else:
+#             substr = ''
+#             while stack[-1] != '[':
+#                 substr = stack.pop() + substr
+#             stack.pop()
+#             integer = ''
+#             while stack and stack[-1].isdigit():
+#                 integer = stack.pop() + integer
+#
+#             stack.append(int(integer) * substr)
+#
+#     return "".join(stack)
+#
+# print(decode('3[a]2[bc]'))
+
+# =============================================================================================
+# Binary search...
+
+# def search(arr, target):
+#     low = 0
+#     high = len(arr) - 1
+#     while low <= high:
+#         mid = (high + low) // 2
+#         if arr[mid] < target:
+#             low = mid + 1
+#         else:
+#             high = mid - 1
+#     return low
+#
+# print(search([1,3,5,6], 7))
+

@@ -308,7 +308,7 @@
 # high = int(input("enter range: "))
 # print(prime(high))
 # # =======================================================
-# # ---- SQUARE ROOT ----
+# # ---- SQUARE ROOT ---- (Using newton Raphson)
 # def squareroot(n):
 #     temp = n
 #     if n > 0:
@@ -322,6 +322,20 @@
 # number = int(input("enter a number: "))
 # res = squareroot(number)
 # print("square root of {} = {:.3f}".format(number, res))
+
+# def sqrt(x: int):
+#     l, r = 0, x
+#     while l <= r:
+#         mid = (l + r) // 2
+#         if (mid * mid) <= x < ((mid + 1) * (mid + 1)):
+#             return mid
+#         if x < (mid * mid):
+#             r = mid - 1
+#         else:
+#             l = mid + 1
+#
+# print(sqrt(15))
+
 # # =======================================================
 # # ----- RANDOM NUMBER GENERATOR (3-DIGIT) -----
 # import random
