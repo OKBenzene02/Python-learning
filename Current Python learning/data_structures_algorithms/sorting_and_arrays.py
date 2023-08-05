@@ -306,3 +306,39 @@
 #     print(res)
 
 # ===============================================================
+# String pr, rp
+
+# def pr_rp(x, y, s):
+#     s1, s2 = 'pr', 'rp'
+#     if x < y:
+#         x, y = y, x
+#         s1, s2 = s2, s1
+#     stack = []
+#     ans = 0
+#     for i in range(len(s) - 1, -1, -1):
+#         curr, first, second = s[i], s1[0], s1[1]
+#         if stack and curr == first and stack[-1] == second:
+#             stack.pop()
+#             ans += x
+#
+#         else:
+#             stack.append(curr)
+#
+#     new_stack = []
+#     while len(stack) > 0:
+#         new_stack.append(stack.pop())
+#
+#     new_str = "".join(new_stack)
+#
+#     for i in range(len(new_str) - 1, -1, -1):
+#         curr, first, second = new_str[i], s2[0], s2[1]
+#         if stack and curr == first and stack[-1] == second:
+#             stack.pop()
+#             ans += y
+#
+#         else:
+#             stack.append(curr)
+#
+#     return ans
+#
+# print(pr_rp(5, 4, 'prabppprrr'))

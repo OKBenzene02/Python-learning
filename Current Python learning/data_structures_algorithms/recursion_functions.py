@@ -290,3 +290,121 @@
 #     subseq(index + 1, arr, l)
 #
 # subseq(0, [], [3,1,2,4,5])
+
+# Subsequences without duplicates
+
+# def subsets(nums):
+#     res = []
+#     def solve(arr, temp, ans):
+#         ans.append(temp)
+#         for i in range(len(arr)):
+#             if i > 0 and arr[i - 1] == arr[i]: continue
+#             solve(arr[i + 1: ], temp + [arr[i]], ans)
+#
+#     solve(nums, [], res)
+#     return res
+#
+# print(subsets([1,5,11,5]))
+
+# Sum of subsets - 1
+
+# def subsetSum(nums):
+#     res = []
+#     def solve(arr, sum, ans):
+#         ans.append(sum)
+#         for i in range(len(arr)):
+#             solve(arr[i + 1: ], sum + arr[i], ans)
+#     solve(nums, 0, res)
+#     return res
+#
+# print(subsetSum([2, 3]))
+
+
+# ================================================================================
+# Combinations
+
+def combinations(n, k):
+    def dfs(nums, temp, res, k):
+        if len(temp) == k:
+            res.append(list(temp))
+            return
+        for i in range(len(nums)):
+            dfs(nums[i + 1: ], temp + [nums[i]], res, k)
+
+    nums = [i + 1 for i in range(n)]
+    res = []
+    dfs(nums, [], res, k)
+    return res
+
+
+print(combinations(4, 2))
+
+
+# ================================================================================
+# Combination Sum - Part - 1
+
+# class Solution:
+#     def findCombinations(self, ind, arr, target, ans, ds):
+#         if ind == len(arr):
+#             if target == 0:
+#                 ans.append(list(ds))
+#             return
+#
+#         if arr[ind] <= target:
+#             ds.append(arr[ind])
+#             self.findCombinations(ind, arr, target - arr[ind], ans, ds)
+#             ds.pop()
+#         self.findCombinations(ind + 1, arr, target, ans, ds)
+#
+#     def combinationSum(self, candidates, target):
+#         ans = []
+#         self.findCombinations(0, candidates, target, ans, [])
+#         return ans
+#
+# obj = Solution()
+# print(obj.combinationSum([2, 3, 5], 8))
+
+# Combination Sum - Part - 2
+
+# class Solution:
+#     def findCombinations(self, ind, arr, target, ans, ds):
+#         if target == 0:
+#             ans.append(list(ds))
+#
+#         for i in range(ind, len(arr)):
+#             if i > ind and arr[i] == arr[i - 1]: continue
+#             if arr[i] > target: break
+#
+#             ds.append(arr[i])
+#             self.findCombinations(i + 1, arr, target - arr[i], ans, ds)
+#             ds.pop()
+#
+#     def combinationSum(self, candidates, target):
+#         ans = []
+#         candidates.sort()
+#         self.findCombinations(0, candidates, target, ans, [])
+#         return ans
+#
+# obj = Solution()
+# print(obj.combinationSum([10,1,2,7,6,1,5], 8))
+
+
+# def partitionSum(nums):
+#     if sum(nums) % 2:
+#         return False
+#
+#     dp = set()
+#     dp.add(0)
+#     target = sum(nums) // 2
+#
+#     for i in range(len(nums) - 1, -1, -1):
+#         nextDp = set()
+#         for num in dp:
+#             if (num + nums[i])== target:
+#                 return True
+#             nextDp.add(num + nums[i])
+#             nextDp.add(num)
+#         dp = nextDp
+#     return True if target in dp else False
+#
+# print(partitionSum([1,2,3,5]))

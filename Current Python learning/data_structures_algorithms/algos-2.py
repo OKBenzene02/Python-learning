@@ -1,5 +1,5 @@
 # Last stone
-import heapq
+# import heapq
 #
 # def lastStone(stones):
 #     stones = [-num for num in stones]
@@ -165,22 +165,6 @@ import heapq
 # n = int(input())
 # print(create_and_produce(n))
 
-# def transpose(mat):
-#     temp = []
-#     for i in range(len(mat)):
-#         tmp = []
-#         for j in range(len(mat)):
-#             tmp.append(0)
-#         temp.append(tmp)
-#
-#     for i in range(len(mat)):
-#         for j in range(len(mat)):
-#             temp[i][j] = mat[j][i]
-#
-#     return temp
-#
-# print(transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
-
 # ===============================================================
 # Length of the last word without using the split method
 
@@ -196,7 +180,6 @@ import heapq
 #
 # print(length("Hello World"))
 # ===============================================================
-
 # Can place flower in flowerbed
 
 # def canPlace(arr, n):
@@ -266,45 +249,7 @@ import heapq
 #
 # print(happy(2))
 
-# ===============================================================
-# Stack Application (String pr or rp)
-
-# def pr_rp(x, y, s):
-#     s1, s2 = 'pr', 'rp'
-#     if x < y:
-#         x, y = y, x
-#         s1, s2 = s2, s1
-#     stack = []
-#     ans = 0
-#     for i in range(len(s) - 1, -1, -1):
-#         curr, first, second = s[i], s1[0], s1[1]
-#         if stack and curr == first and stack[-1] == second:
-#             stack.pop()
-#             ans += x
-#
-#         else:
-#             stack.append(curr)
-#
-#     new_stack = []
-#     while len(stack) > 0:
-#         new_stack.append(stack.pop())
-#
-#     new_str = "".join(new_stack)
-#
-#     for i in range(len(new_str) - 1, -1, -1):
-#         curr, first, second = new_str[i], s2[0], s2[1]
-#         if stack and curr == first and stack[-1] == second:
-#             stack.pop()
-#             ans += y
-#
-#         else:
-#             stack.append(curr)
-#
-#     return ans
-#
-# print(pr_rp(5, 4, 'prabppprrr'))
 # ====================================================================
-
 # Minimum path sum
 
 # def minPathSum(grid: list[list]) -> int:
@@ -384,23 +329,6 @@ import heapq
 #     return res
 #
 # print(reduceDishes([-1,-8,0,5,-9]))
-
-# ====================================================================
-
-# from collections import defaultdict
-#
-# def indexFind(x):
-#     l = list(str(x))
-#     mp = defaultdict(list)
-#
-#     for i in range(len(l)):
-#         mp[l[i]].append(str(i))
-#
-#     for key, val in mp.items():
-#         print(f"{key} {' '.join(val)} ")
-#
-# print(indexFind(122345))
-
 # ====================================================================
 # Single Num
 #
@@ -412,6 +340,17 @@ import heapq
 #     return temp
 #
 # print(singleNum([4,1,2,1,2]))
+# ====================================================================
+# Missing Number
+
+# def missingNumber(nums):
+#     xor = len(nums)
+#     for i in range(len(nums)):
+#         xor ^= i
+#         xor ^= nums[i]
+#     return xor
+#
+# print(missingNumber([3,0,1]))
 # ====================================================================
 # Majority Element
 
@@ -656,6 +595,19 @@ import heapq
 #     return res
 #
 # print(zigzag("PAYPALISHIRING", 3))
+
+# def zigZagConversion(s, rows):
+#     if rows == 1 or rows >= len(s) - 1: return s
+#     L = [''] * rows
+#     index, step = 0, 1
+#     for char in s:
+#         L[index] += char
+#         if index == 0: step = 1
+#         elif index == rows - 1: step = -1
+#         index += step
+#     return "".join(L)
+#
+# print(zigZagConversion('PAYPALISHIRING', 3))
 
 # =================================================================
 # Longest Palindromic Substring
@@ -999,30 +951,77 @@ import heapq
 #
 # print(collision([10, 2, -5]))
 
-# def spiralOrder(matrix):
-#     res = []
-#     m, n = len(matrix), len(matrix[0])
-#
-#     if not matrix: return
-#     x, y, di = 0, 0, 0
-#     seen = [[0 for _ in range(n)] for _ in range(m)]
-#
-#     rows = [0, 1, 0, -1]
-#     cols = [1, 0, -1, 0]
-#
-#     for _ in range(m * n):
-#         res.append(matrix[x][y])
-#         seen[x][y] = 1
-#         cr = x + rows[di]
-#         cc = y + cols[di]
-#
-#         if (cr >= 0) and (cc >= 0) and (cr < m) and (cc < n) and not seen[cr][cc]:
-#             x, y = cr, cc
-#         else:
-#             di = (di + 1) % 4
-#             x += rows[di]
-#             y += cols[di]
-#     return res
+# ============================================================================
+# Validate the stack sequences
+
+# def validate(pushed, popped):
+#     stack = []; i = 0
+#     for num in pushed:
+#         stack.append(num)
+#         while stack and stack[-1] == popped[i]:
+#             stack.pop()
+#             i += 1
+#     return not stack
 #
 #
-# print(spiralOrder([[1,2,3,4],[5,6,7,8],[9,10,11,12]]))
+# print(validate([1,2,3,4,5], [4,3,5,1,2]))
+# ============================================================================
+
+# Longest Common SubSequence
+
+# def longestCommonSubsequence(s1, s2):
+#     dp = [[0 for _ in range(len(s2) + 1)] for _ in range(len(s1) + 1)]
+#
+#     for i in range(len(s1) - 1, -1, -1):
+#         for j in range(len(s2) - 1, -1, -1):
+#             if s1[i] == s2[j]:
+#                 dp[i][j] = 1 + dp[i + 1][j + 1]
+#             else:
+#                 dp[i][j] = max(dp[i + 1][j], dp[i][j + 1])
+#
+#     return dp[0][0]
+#
+# print(longestCommonSubsequence('abcde', 'ace'))
+
+
+# def longestCommonSubsequence(s):
+#     s1, s2 = s, s[::-1]
+#     dp = [[0 for _ in range(len(s2) + 1)] for _ in range(len(s1) + 1)]
+#
+#     for i in range(len(s1) - 1, -1, -1):
+#         for j in range(len(s2) - 1, -1, -1):
+#             if s1[i] == s2[j]:
+#                 dp[i][j] = 1 + dp[i + 1][j + 1]
+#             else:
+#                 dp[i][j] = max(dp[i + 1][j], dp[i][j + 1])
+#
+#     return dp[0][0]
+#
+# print(longestCommonSubsequence('cbba'))
+# ============================================================================
+# Maximum value of K coins from pile
+
+# def maximumKvalue(piles, k):
+#     n = len(piles)
+#     dp = [[-1] * (k + 1) for _ in range(n)]
+#     def dfs(i, coins):
+#         if i == n:
+#             return 0
+#
+#         if dp[i][coins] != -1:
+#             return dp[i][coins]
+#
+#         dp[i][coins] = dfs(i + 1, coins)
+#         curPile = 0
+#         for j in range(min(coins, len(piles[i]))):
+#             curPile += piles[i][j]
+#             dp[i][coins] = max(dp[i][coins], curPile + dfs(i + 1, coins - j - 1))
+#         return dp[i][coins]
+#
+#     return dfs(0, k)
+#
+#
+# print(maximumKvalue([[1,100,3],[7,8,9]], 2))
+
+# ============================================================================
+

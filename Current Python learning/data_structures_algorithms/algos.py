@@ -604,7 +604,7 @@ import math
 #             return [mp[right], i]
 #         mp[num] = i
 #
-# print(twoSum([2,7,11,15], 9))
+# print(twoSum([1,2,3,4,5,6,7,8,9,10], 15))
 # ======================================================================
 # Reverse integer
 # def int_reverse(x):
@@ -1095,4 +1095,3 @@ import math
 #     return low
 #
 # print(search([1,3,5,6], 7))
-
