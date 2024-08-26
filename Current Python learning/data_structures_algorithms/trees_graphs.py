@@ -59,6 +59,7 @@
 # words = ["bad","dad","mad","pad","bad",".ad","b.."]
 #
 # for word in words:
+#     print(f"Searching for words {word}" if "." in word else f"Adding words {word}")
 #     t.add(word)
 #
 # print(t.search("bad"))
@@ -70,51 +71,51 @@
 # ====================================================================
 
 # Tree Traversals
-from collections import deque, defaultdict
+# from collections import deque, defaultdict
+# #
+# class Tree:
 #
-class Tree:
-
-    def __init__(self):
-        self.graph = defaultdict(list)
-
-    def addEdge(self, u, v):
-        self.graph[u].append(v)
-
-    def bfsTree(self, V, v):
-        level = [0] * (V)
-        visited = [False] * (V)
-        queue = deque()
-        queue.append(v)
-        level[v] = 0
-        visited[v] = True
-
-        while queue:
-            node = queue.popleft()
-            for vertex in self.graph[node]:
-                adj = vertex
-                if not visited[adj]:
-                    queue.append(adj)
-                    level[adj] = level[node] + 1
-                    visited[adj] = True
-        print("Nodes", " ", "Level")
-        for i in range(V):
-            print(" ", i,  " --> ", level[i])
-
-
-V = 8
-
-tree = Tree()
-tree.addEdge(0, 0)
-tree.addEdge(0, 2)
-tree.addEdge(1, 3)
-tree.addEdge(1, 4)
-tree.addEdge(1, 5)
-tree.addEdge(2, 5)
-tree.addEdge(2, 6)
-tree.addEdge(6, 7)
-
-# call levels function with source as 0
-tree.bfsTree(V, 0)
+#     def __init__(self):
+#         self.graph = defaultdict(list)
+#
+#     def addEdge(self, u, v):
+#         self.graph[u].append(v)
+#
+#     def bfsTree(self, V, v):
+#         level = [0] * (V)
+#         visited = [False] * (V)
+#         queue = deque()
+#         queue.append(v)
+#         level[v] = 0
+#         visited[v] = True
+#
+#         while queue:
+#             node = queue.popleft()
+#             for vertex in self.graph[node]:
+#                 adj = vertex
+#                 if not visited[adj]:
+#                     queue.append(adj)
+#                     level[adj] = level[node] + 1
+#                     visited[adj] = True
+#         print("Nodes", " ", "Level")
+#         for i in range(V):
+#             print(" ", i,  " --> ", level[i])
+#
+#
+# V = 8
+#
+# tree = Tree()
+# tree.addEdge(0, 0)
+# tree.addEdge(0, 2)
+# tree.addEdge(1, 3)
+# tree.addEdge(1, 4)
+# tree.addEdge(1, 5)
+# tree.addEdge(2, 5)
+# tree.addEdge(2, 6)
+# tree.addEdge(6, 7)
+#
+# # call levels function with source as 0
+# tree.bfsTree(V, 0)
 
 # ====================================================================
 # Graph Traversals
@@ -174,6 +175,28 @@ tree.bfsTree(V, 0)
 # print("Following is Depth First Traversal"
 #       " (starting from vertex 2)")
 # g.dfs(2)
+
+# def DFS(graph, start):
+#     visited = set()
+#     stack = [start]
+#
+#     while stack:
+#         node = stack.pop()
+#         if node not in visited:
+#             print(node)  # Process the node
+#             visited.add(node)
+#             stack.extend([neighbor for neighbor in graph[node] if neighbor not in visited])
+#
+# graph = {
+#     'A': ['B', 'C'],
+#     'B': ['D', 'E'],
+#     'C': ['F'],
+#     'D': [],
+#     'E': ['F'],
+#     'F': []
+# }
+#
+# print(DFS(graph, 'A'))
 
 # ====================================================================
 
@@ -586,3 +609,60 @@ tree.bfsTree(V, 0)
 #     return res
 #
 # print(suggestProduct(["mobile","mouse","moneypot","monitor","mousepad"], "mouse"))
+
+# ====================================================================
+# Evaluate division
+# from typing import List
+# from collections import defaultdict, deque
+# def evalDivision(equations: List[List[str]], values: List[float], queries: List[List[str]]):
+#     graph = defaultdict(dict)
+#     for (x, y), val in zip(equations, values):
+#         graph[x][y] = val
+#         graph[y][x] = 1 / val
+#
+#     def dfs(x, y, visited):
+#         if x not in graph or y not in graph: return -1.0
+#
+#         if y in graph[x]: return graph[x][y]
+#         for vals in graph[x]:
+#             if vals not in visited:
+#                 visited.add(vals)
+#                 temp = dfs(vals, y, visited)
+#                 if temp == -1: continue
+#                 else: return temp * graph[x][vals]
+#         return -1
+#
+#     res = []
+#     for query in queries:
+#         res.append(dfs(query[0], query[1], set()))
+#     return res
+#
+# print(evalDivision(equations = [["a","b"],["b","c"]],
+#                    values = [2.0,3.0], queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]))
+
+# ====================================================================
+# Course Schedule
+# from collections import defaultdict
+#
+# def courseSchedule(numCourses, prerequisites):
+#     courseMap = defaultdict(list)
+#     for crs, pre in prerequisites:
+#         courseMap[crs].append(pre)
+#
+#     visited = set()
+#     def dfs(crs):
+#         if crs in visited: return False
+#         if courseMap[crs] is []: return True
+#         visited.add(crs)
+#         for pre in courseMap[crs]:
+#             if not dfs(pre): return False
+#         visited.remove(crs)
+#         courseMap[crs] = []
+#         return True
+#
+#     for crs in range(numCourses):
+#         if not dfs(crs): return False
+#     return True
+#
+#
+# print(courseSchedule(2, [[0, 1]]))

@@ -13,11 +13,11 @@
 
 # # =====================================
 
-# class Details:
-#     def __init__(self, aname, aid):
-#         self.name = aname
-#         self.id = aid
-#
+class Details:
+    def __init__(self, aname, aid):
+        self.name = aname
+        self.id = aid
+
 # class Student(Details):
 #     def details(self):
 #         print(f"Name- {self.name}\n"
@@ -65,6 +65,25 @@
 #         super().__init__("ok")
 #
 # a = B()
+
+class A:
+    def __init__(self, name):
+        print(name, "class A ka name")
+
+    def nameIt(self, *a):
+        return a[1:20] if len(a) > 1 else a
+
+class B(A):
+    def __init__(self):
+        print("class B")
+        # super().__init__("ok")
+        super().nameIt()
+
+    def printUpperClass(self, *a):
+        return self.nameIt(*a)
+
+a = B()
+a.printUpperClass(1,2,3,4,4,5234,1,33,324,2,3234)
 
 # class addition:
 #     def __init__(self,a=0,b=0):

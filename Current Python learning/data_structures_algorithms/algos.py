@@ -295,19 +295,23 @@ import math
 # All prime factors of n
 
 # def prime_factors(n: int):
+#     factors = []
+#
 #     while n % 2 == 0:
-#         print(2)
-#         n = n / 2
+#         factors.append(2)
+#         n = n // 2
 #
 #     for i in range(3, int(math.sqrt(n)) + 1, 2):
 #         while n % i == 0:
-#             print(i)
-#             n = n / i
+#             factors.append(i)
+#             n = n // i
 #
 #     if n > 2:
-#         print(n)
+#         factors.append(n)
 #
-# prime_factors(6)
+#     return factors
+#
+# print(prime_factors(378))
 
 # ==========================================================================
 # Least Prime Factor
@@ -392,7 +396,7 @@ import math
 #
 #     return 1 + sum
 #
-# print(sum_factors(15))
+# print(sum_factors(378))
 
 # def sumFactor(n):
 #     if n == 1:
@@ -652,7 +656,7 @@ import math
 #
 #     for char in s:
 #         mp[char] = mp.get(char, 0) + 1
-#
+#+-
 #     res, odd = 0, False
 #
 #     for key, count in mp.items():
@@ -700,8 +704,7 @@ import math
 #
 #     return res
 #
-# print(maximumSumSubArray([-2, -3, 4, -1, -2, 1, 5, -3]))
-
+# print(maximumSumSubArray([-7,-8 ,-16, -4, -8, -5, -7, -11, -10, -12, -4, -6, -4, -16, -10]))
 
 # Min subarray using Kadane's algorithm
 # def min_subarray(l: list):

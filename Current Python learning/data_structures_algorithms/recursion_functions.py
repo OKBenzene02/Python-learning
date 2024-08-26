@@ -319,26 +319,38 @@
 #
 # print(subsetSum([2, 3]))
 
+# def uniqueSubSet(nums):
+#     nums.sort()
+#     res = []
+#     def solve(nums, temp, res, ):
+#         res.append(temp)
+#         for i in range(len(nums)):
+#             if i > 0 and nums[i] == nums[i - 1]: continue
+#             solve(nums[i + 1:], temp + [nums[i]], res)
+#     solve(nums, [], res)
+#     return res
+#
+# print(uniqueSubSet([1,2,3,4]))
+
 
 # ================================================================================
 # Combinations
 
-def combinations(n, k):
-    def dfs(nums, temp, res, k):
-        if len(temp) == k:
-            res.append(list(temp))
-            return
-        for i in range(len(nums)):
-            dfs(nums[i + 1: ], temp + [nums[i]], res, k)
-
-    nums = [i + 1 for i in range(n)]
-    res = []
-    dfs(nums, [], res, k)
-    return res
-
-
-print(combinations(4, 2))
-
+# def combinations(n, k):
+#     def dfs(nums, temp, res, k):
+#         if len(temp) == k:
+#             res.append(list(temp))
+#             return
+#         for i in range(len(nums)):
+#             dfs(nums[i + 1: ], temp + [nums[i]], res, k)
+#
+#     nums = [i + 1 for i in range(n)]
+#     res = []
+#     dfs(nums, [], res, k)
+#     return res
+#
+#
+# print(combinations(4, 2))
 
 # ================================================================================
 # Combination Sum - Part - 1
@@ -408,3 +420,110 @@ print(combinations(4, 2))
 #     return True if target in dp else False
 #
 # print(partitionSum([1,2,3,5]))
+
+# ================================================================================
+# Palindrome Partition
+
+# def palindromePartition(s):
+#     res = []; temp = []
+#     def isPalindrome(s, start, end):
+#         while start <= end:
+#             if s[start] != s[end]: return False
+#             start += 1
+#             end -= 1
+#         return True
+#
+#     def solve(ind):
+#         if ind == len(s):
+#             res.append(temp[:])
+#             return
+#         for i in range(ind, len(s)):
+#             if isPalindrome(s, ind, i):
+#                 temp.append(s[ind:i+1])
+#                 solve(i + 1)
+#                 temp.pop()
+#     solve(0)
+#     return res
+#
+#
+# print(palindromePartition("aab"))
+
+# ================================================================================
+# Kth - permutation sequence
+
+# Naive Solution
+# def kthPermutationSequence(n, k):
+#     res = []
+#     s = ""
+#     for i in range(n):
+#         s += str(i + 1)
+#
+#     def swap(s, i, j):
+#         s = list(s)
+#         s[i], s[j] = s[j], s[i]
+#         return "".join(s)
+#
+#     def permutate(s, res, ind):
+#         if ind == len(s):
+#             res.append(s)
+#             return
+#         for i in range(ind, n):
+#             s = swap(s, i, ind)
+#             permutate(s, res, ind + 1)
+#             s = swap(s, i, ind)
+#
+#     permutate(s, res, 0)
+#
+#     res.sort()
+#     return res[k - 1]
+#
+# print(kthPermutationSequence(3, 3))
+
+# optimal solution
+# def kthPertumutationSequence(n, k):
+#     fact = 1
+#     res = ""
+#     nums = []
+#     for i in range(1, n):
+#         fact *= i
+#         nums.append(i) # Currently we have n = 4 but numbers added in list will be [1, 2, 3] and fact will be 6
+#     nums.append(n) # Add the last sequence number eg - [1, 2, 3] => add 4 ==> [1,2,3,4]
+#
+#     k -= 1
+#     while True:
+#         res += str(nums[k // fact])
+#         nums.pop(k // fact)
+#         if not nums: break
+#         k %= fact
+#         fact //= len(nums)
+#     return res
+#
+# print(kthPertumutationSequence(4, 17))
+
+# ================================================================================
+# Find all permutations of a string
+
+def find_permutation(s):
+    # Code here
+    res = []
+    mp = dict()
+    s = list(s)
+    s.sort()
+    for i in range(len(s)):
+        mp[i] = False
+
+    def solve(s, res, temp, mp):
+        if len(temp) == len(s):
+            res.append("".join(temp))
+            return
+        for i in range(len(s)):
+            if not mp[i]:
+                temp.append(s[i])
+                mp[i] = True
+                solve(s, res, temp, mp)
+                mp[i] = False
+                temp.pop()
+    solve(s, res, [], mp)
+    return res
+
+print(find_permutation("ABB"))

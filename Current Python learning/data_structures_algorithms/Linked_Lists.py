@@ -249,6 +249,7 @@ class LinkedList:
         new_node = Node(data)
         if not self.head:
             self.head = new_node
+            self.size += 1
             return
 
         head = self.head
@@ -292,13 +293,18 @@ class LinkedList:
             head = head.next
         print()
 
+
 ll = LinkedList()
-ll.pushleft(4)
-ll.insertPos(4, 5)
-ll.insertPos(5, 6)
-ll.insertPos(6, 7)
-ll.insertPos(7, 8)
-ll.insertIdx(2, 10)
+ll.append(1)
+ll.append(2)
+ll.append(3)
+ll.append(4)
+ll.append(5)
+# ll.insertPos(4, 5)
+# ll.insertPos(5, 6)
+# ll.insertPos(6, 7)
+# ll.insertPos(7, 8)
+# ll.insertIdx(2, 10)
 # ll.pushleft(23)
 # ll.insertPos(3,6)
 # ll.mergeSort(ll.head)
@@ -311,5 +317,4 @@ print(ll.size)
 # ll.deleteAt()
 # ll.show(ll.head)
 # print(ll.isPresent(4))
-
 

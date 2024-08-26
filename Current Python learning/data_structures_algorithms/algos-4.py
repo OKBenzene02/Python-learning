@@ -1,4 +1,5 @@
 # Best time to buy stocks and sell - 2
+import collections
 import math
 
 # def buyStocksAndSell(prices):
@@ -90,13 +91,14 @@ import math
 # # Product of Array Expect Self
 
 # def productOfArray(nums):
-#     suf, pref, temp = 1, 1, [1] * len(nums)
+#     prefix, postfix, res = 1, 1, [1] * len(nums)
 #     for i in range(len(nums)):
-#         temp[i] *= suf
-#         suf *= nums[i]
-#         temp[-1-i] *= pref
-#         pref *= nums[-1-i]
-#     return temp
+#         res[i] = prefix
+#         prefix *= nums[i]
+#     for i in range(len(nums) - 1, -1, -1):
+#         res[i] *= postfix
+#         postfix *= nums[i]
+#     return res
 #
 # print(productOfArray([1,2,3,4]))
 
@@ -168,7 +170,8 @@ import math
 # Ransom Notes
 from collections import Counter, defaultdict
 # def ransomNote(ransom, magazine):
-#     return not Counter(ransom) - Counter(magazine)
+#     print(Counter(ransom))
+#     print(Counter(magazine))
 #
 # print(ransomNote("aa", "aab"))
 
@@ -553,29 +556,368 @@ from collections import Counter, defaultdict
 # # ========================================================================
 # Letter combinations of phone number
 
-def letterCombinations(digits):
-    def dfs(temp, res, i):
-        if len(digits) == i:
-            res.append("".join(temp))
-            return
-        for char in mp.get(digits[i]):
-            temp.append(char)
-            dfs(temp, res, i + 1)
-            temp.pop()
+# def letterCombinations(digits):
+#     def dfs(temp, res, i):
+#         if len(digits) == i:
+#             res.append("".join(temp))
+#             return
+#         for char in mp.get(digits[i]):
+#             temp.append(char)
+#             dfs(temp, res, i + 1)
+#             temp.pop()
+#
+#     mp = {
+#         '2': ['a', 'b', 'c'],
+#         '3': ['d', 'e', 'f'],
+#         '4': ['g', 'h', 'i'],
+#         '5': ['j', 'k', 'l'],
+#         '6': ['m', 'n', 'o'],
+#         '7': ['p', 'q', 'r', 's'],
+#         '8': ['t', 'u', 'v'],
+#         '9': ['w', 'x', 'y', 'z'],
+#     }
+#     res = []
+#     dfs([], res, 0)
+#
+#     return res
+#
+# print(letterCombinations("23"))
 
-    mp = {
-        '2': ['a', 'b', 'c'],
-        '3': ['d', 'e', 'f'],
-        '4': ['g', 'h', 'i'],
-        '5': ['j', 'k', 'l'],
-        '6': ['m', 'n', 'o'],
-        '7': ['p', 'q', 'r', 's'],
-        '8': ['t', 'u', 'v'],
-        '9': ['w', 'x', 'y', 'z'],
-    }
-    res = []
-    dfs([], res, 0)
 
-    return res
+# def leastNumber(scores):
+#     n = len(scores)
+#     nearest_smaller = [-1] * n
+#     stack = []
+#
+#     for i in range(n):
+#         while stack and scores[i] < scores[stack[-1]]:
+#             nearest_smaller[stack.pop()] = i + 1
+#         stack.append(i)
+#
+#     return nearest_smaller
 
-print(letterCombinations("23"))
+# def numberPattern(n):
+#     num, res = 1, []
+#     for i in range(n):
+#         temp = [-1] * n
+#         for j in range(i + 1):
+#             if num > 9:
+#                 num = 1
+#             temp[-(i + 1) + j] = num
+#             num += 1
+#         res.append(temp)
+#     return res
+#
+# print(numberPattern(3))
+
+# def printPattern(n):
+#     for i in range(n):
+#         print(" " * (n - i - 1), end="")
+#         print("*" * (2 * i + 1))
+#
+# printPattern(5)
+
+# def convertCases(s):
+#     res = ""
+#     for i, char in enumerate(s):
+#         if i == 0 and char.isupper(): res += char.lower()
+#         elif i > 0 and char.isupper(): res += " " + char.lower()
+#         else:
+#             res += char.lower()
+#     return res
+#
+# print(convertCases("hello world"))
+
+# def funcc(a,b):
+#     return a + b
+# n = 5
+# h = 5
+# # res = funcc(n,h)
+# # funcc(n, h)
+# funcc(n,h)
+
+# def countRepeated(s):
+#     counter = Counter(s)
+#     repeated = {char: count for char, count in counter.items() if count > 1}
+#     return repeated
+#
+# print(countRepeated("hello world"))
+#
+
+# def pairsWithSum(nums, x):
+#     # res = []
+#     # seen = set()
+#     # for num in nums:
+#     #     left = x - num
+#     #     if left in seen: res.append([num, left])
+#     mp = {}
+#     for i, num in enumerate(nums):
+#         left = x - num
+#         if left in mp: return [mp[i], left]
+#         mp[num] = i
+#
+# print(pairsWithSum([1, 2, 3, 4, 5, 6, 7], 5))
+
+# def countStringNumber(s):
+#     total = 0
+#     for char in s:
+#         if char.isalpha():
+#             total += ord(char.upper()) - ord('A')
+#     return total
+#
+# print(countStringNumber("ZXY"))
+
+# ===================================================================
+# Monotonic Array
+
+# def isMonotonic(nums) -> bool:
+#     increase = False
+#     decrease = False
+#     for i in range(len(nums) - 1):
+#         if nums[i] < nums[i + 1]:
+#             increase = True
+#         elif nums[i] >= nums[i + 1]:
+#             decrease = True
+#     return False if increase and decrease else True
+#
+# print(isMonotonic([6,5,4,4]))
+# ===================================================================
+# Bus Route connectivity
+
+# def busRoute(n, m, arr1, arr2, src, dest):
+#     commoness = set(arr1).intersection(set(arr2))
+#     return commoness
+#
+# print(busRoute(5, 6, [1,2,3,4,5], [6,7,3,8,9,10], 2, 9))
+
+def can_travel(N, M, route_a, route_b, X, Y):
+    # Create sets to store the stops for each route for faster lookup
+    stops_a = set(route_a)
+    stops_b = set(route_b)
+
+    # Check if the source and destination stops are in the same route
+    if (X in stops_a and Y in stops_a) or (X in stops_b and Y in stops_b):
+        return "YES"  # Passenger can travel directly on one of the routes
+
+    # Check if there is a common stop where the routes merge
+    common_stops = stops_a.intersection(stops_b)
+    if not common_stops:
+        return "NO"  # There is no common stop
+
+    # Check if the source and destination stops can be reached from the common stop
+    for common_stop in common_stops:
+        if (X in stops_a and Y in stops_b) or (X in stops_b and Y in stops_a):
+            return "YES"  # Passenger can travel by merging the routes at the common stop
+
+    return "NO"  # Passenger cannot travel from X to Y using the available buses
+
+# Input
+# N = int(input())
+# route_a = list(map(int, input().split()))
+# M = int(input())
+# route_b = list(map(int, input().split()))
+# X, Y = map(int, input().split())
+
+# Check if passenger can travel and print the result
+# result = can_travel(4, 4, [11,22,33,44], [55,66,33,77], 11, 66)
+# print(result)
+#
+# def can_travel(N, M, route_a, route_b, X, Y):
+#     stops_a = set(route_a)
+#     stops_b = set(route_b)
+#
+#     if (X in stops_a and Y in stops_a) or (X in stops_b and Y in stops_b):
+#         return "Yes"
+#     common_stops = stops_a.intersection(stops_b)
+#     if not common_stops:
+#         return "No"
+#
+#     can_reach_common_stop_from_X = (X in stops_a and common_stops.issubset(stops_a)) or (X in stops_b and common_stops.issubset(stops_b))
+#     can_reach_common_stop_from_Y = (Y in stops_a and common_stops.issubset(stops_a)) or (Y in stops_b and common_stops.issubset(stops_b))
+#
+#     if can_reach_common_stop_from_X and can_reach_common_stop_from_Y:
+#         return "Yes"
+#
+#     return "No"
+#
+# # Test case
+# result = can_travel(4, 4, [11, 22, 33, 44], [55, 66, 33, 77], 11, 66)
+# print(result)  # Output should be "NO"
+
+# def is_valid_email(email):
+#     if email.count('@') != 1:
+#         return False
+#
+#     local_part, domain_part = email.split('@')
+#
+#     # Check local part
+#     for char in local_part:
+#         if not char.isalnum() and char not in ['.', '-']:
+#             return False
+#
+#     # Check domain part
+#     if '.' not in domain_part:
+#         return False
+#
+#     for char in domain_part:
+#         if not char.isalnum() and char != '.':
+#             return False
+#
+#     return True
+
+# def is_valid_email(email):
+#     if '@' not in email or '.' not in email:
+#         return False
+#
+#     # Split the email address into local part and domain part
+#     local_part, domain_part = email.split('@')
+#
+#     # Check the local part
+#     if not local_part or local_part[0] == '.' or local_part[-1] == '.':
+#         return False
+#
+#     # Check the domain part
+#     if not domain_part or domain_part[0] == '.' or domain_part[-1] == '.':
+#         return False
+#
+#     # Check that the local and domain parts do not contain invalid characters
+#     valid_chars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_")
+#     if not all(char in valid_chars for char in local_part) or not all(char in valid_chars for char in domain_part):
+#         return False
+#
+#     # Check that the domain part has at least one '.' and does not start with a '-'
+#     if domain_part.count('.') < 1 or domain_part.startswith('-'):
+#         return False
+#
+#     return True
+#
+# # Read input
+# N = int(input().strip())
+# emails = [input().strip() for _ in range(N)]
+#
+# # Validate each email
+# for email in emails:
+#     print(is_valid_email(email))
+
+# def generate_ticket_code(n):
+#     if n == 1:
+#         return "A"
+#
+#     prev_ticket_code = "A"
+#     for _ in range(2, n + 1):
+#         new_ticket_code = ""
+#         count = 1
+#
+#         for i in range(1, len(prev_ticket_code)):
+#             if prev_ticket_code[i] == prev_ticket_code[i - 1]:
+#                 count += 1
+#             else:
+#                 new_ticket_code += str(count) + prev_ticket_code[i - 1]
+#                 count = 1
+#
+#         new_ticket_code += str(count) + prev_ticket_code[-1]
+#         prev_ticket_code = new_ticket_code
+#
+#     return prev_ticket_code
+#
+# # Example usage:
+# n = 3  # Change this to the desired ticket number
+# nth_ticket_code = generate_ticket_code(n)
+# print(f"The ticket code for ticket #{n} is: {nth_ticket_code}")
+
+# # ============================================================================
+# Reverse Vowels in string
+# def reverseVowels(s: str) -> str:
+#     vowels = ['a', 'e', 'i', 'o', 'u']
+#     stack = []
+#     for vowel in s:
+#         if vowel in vowels: stack.append(vowel)
+#
+#     s = list(s)
+#     for i, char in enumerate(s):
+#         if char in vowels:
+#             s[i] = stack.pop()
+#     return "".join(s)
+
+# Reverse words in the string
+# def reverseWords(s):
+#     res = ""
+#     i = 0
+#     n = len(s)
+#     while i < n:
+#         while i < n and s[i] == " ": i += 1
+#
+#         if i >= n: break
+#         j = i + 1
+#         while j < n and s[j] != ' ': j += 1
+#         word = s[i: j]
+#         if not res: res = word
+#         else: res = word + " " + res
+#         i = j + 1
+#     return res
+#
+# print(reverseWords("hello world"))
+
+# # ============================================================================
+# Set Matrix zeros
+
+# def setZeros(matrix):
+#     for i in range(len(matrix)):
+#         for j in range(len(matrix[0])):
+#             if matrix[i][j] == 0:
+#                 # Change the row values of that 0 as -1
+#                 for m in range(len(matrix)):
+#                     if matrix[m][j] != 0:
+#                         matrix[m][j] = -1
+#
+#                 # Change the column values of that 0 as -1
+#                 for n in range(len(matrix[0])):
+#                     if matrix[i][n] != 0:
+#                         matrix[i][n] = -1
+#
+#     for i in range(len(matrix)):
+#         for j in range(len(matrix[0])):
+#             if matrix[i][j] == -1:
+#                 matrix[i][j] = 0
+#
+#     return matrix
+#
+# print(setZeros([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))
+
+# # ============================================================================
+# Next Permutation in lexicographically greater form
+
+# def nextPermutation(nums):
+#     n = len(nums)
+#     idx = -1
+#     for i in range(n - 2, -1, -1):
+#         if nums[i] < nums[i + 1]:
+#             idx = i
+#             break
+#
+#     if idx == -1:
+#         nums.sort()
+#         return nums
+#
+#     for i in range(n - 1, idx, -1):
+#         if nums[i] > nums[idx]:
+#             nums[i], nums[idx] = nums[idx], nums[i]
+#             break
+#
+#     nums[idx + 1: ] = reversed(nums[idx + 1: ])
+#     return nums
+#
+#
+# print(nextPermutation([4,3,2,1]))
+# # ============================================================================
+# Increasing Triplet Subsequence
+
+# def increasingTripletSequence(nums):
+#     left, mid = float('inf'), float('inf')
+#     for right in nums:
+#         if right < left: left = right
+#         elif left < right < mid: mid = right
+#         elif mid < right: return True
+#     return False
+# 
+# print(increasingTripletSequence([2,1,5,0,4,6]))

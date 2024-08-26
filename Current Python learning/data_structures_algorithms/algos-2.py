@@ -104,6 +104,23 @@
 #
 # print(longestCommonPrefix(["flower","flow","flight"]))
 
+# Approach 2
+# def longestCommonPrefix(strs):
+#     if not strs: return -1
+#
+#     prefix = strs[0]
+#
+#     for s in strs[1:]:
+#         while not s.startswith(prefix):
+#             prefix = prefix[:-1]
+#             if not prefix: return -1
+#
+#     return prefix
+#
+# print(longestCommonPrefix(["geeksforgeeks", "geeks", "geek", "geezer"]))
+# print(longestCommonPrefix(["d", "d", "d", "d"]))
+
+
 # ===============================================================
 # Valid Parentheses
 
@@ -355,12 +372,34 @@
 # Majority Element
 
 # def major(nums):
-#     mp = {}
+#     """Approach 1"""
+#     # mp = {}
+#     # for num in nums:
+#     #     mp[num] = 1 + mp.get(num, 0)
+#     #
+#     # for key, val in mp.items():
+#     #     if val > (len(nums) // 2):
+#     #         return key
+#     # return -1
+#     """Approach 2 - Moore's Algorithm"""
+#     n = len(nums)
+#     count = 0
+#     element = None
 #     for num in nums:
-#         mp[num] = mp.get(num, 0) + 1
+#         if count == 0:
+#             count += 1
+#             element = num
+#         if num == element: count += 1
+#         else: count -= 1
 #
-#     mp = sorted(mp, key=lambda x: (-mp[x], x))
-#     return mp[0]
+#     new_count = 0
+#     for num in nums:
+#         if element == num:
+#             new_count += 1
+#
+#     if new_count > (n // 2): return element
+#     return -1
+#
 #
 # print(major([3,2,3]))
 # ====================================================================
@@ -379,7 +418,7 @@
 #
 #     return l
 #
-# print(pascalTriangle(1))
+# print(pascalTriangle(5))
 
 # ====================================================================
 # Scrambled Strings
@@ -950,6 +989,20 @@
 #     return stack
 #
 # print(collision([10, 2, -5]))
+
+# def asteroidCollisions(asteroids):
+#     stack = []
+#     for asteroid in asteroids:
+#         while stack and stack[-1] > 0 and asteroid < 0:
+#             if stack[-1] + asteroid == 0: stack.pop()
+#             if stack[-1] + asteroid > 0: break
+#             else:
+#                 stack.pop()
+#                 break
+#         else: stack.append(asteroid)
+#     return stack
+#
+# print(asteroidCollisions([10, 2, -5]))
 
 # ============================================================================
 # Validate the stack sequences
